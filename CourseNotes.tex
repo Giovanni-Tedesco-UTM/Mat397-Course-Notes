@@ -1,0 +1,74 @@
+\documentclass[a4paper]{article}
+
+\usepackage{hyperref}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{amsmath, amssymb}
+\usepackage{amsthm}
+\usepackage{mdframed}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{tikz}
+
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+  \def\svgwidth{\columnwidth}
+  \import{./figures/}{#1.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+\newmdtheoremenv{theo}{Problem}
+\setcounter{theo}{72}
+
+\newtheorem{thm}{Theorem}[subsection]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{problem}[thm]{Problem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{propn}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+\DeclareMathOperator{\Hom}{Hom}
+
+
+\begin{document}
+  \begin{titlepage}
+   \begin{center}
+       \vspace*{1cm}
+       {\huge
+       \textbf{Mat397: Further Topics in Mathematics}}\
+
+       \vspace{1.5cm}
+
+       {\large
+       \textbf{Course Notes}}
+
+       \vspace{0.8cm}
+       \textbf{Giovanni Tedesco}
+       \vspace{0.8cm}
+   \end{center}
+  \end{titlepage}
+  \tableofcontents
+  \newpage
+
+  \input{CellularAutomata.tex}
+  \newpage
+  \input{ResiduallyFiniteGroups.tex}
+  \newpage
+  \input{SurjunctiveGroups.tex}
+  \newpage
+  \input{AmenableGroups}
+  \newpage
+  \appendix
+  \input{Exercises.tex}
+
+  
+\end{document} 
+

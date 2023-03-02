@@ -1,0 +1,168 @@
+\section{Residually Finite Groups}%
+\label{sec:Residually Finite Groups}
+
+\subsection{Residually Finite Groups}
+Residually finite groups attempt to generalize some of the nice properties that we 
+have about finite groups into groups that are not necessarily finite. We do this by
+looking at groups that are almost kinda finite. Namely in this section we will 
+explore the properties of Residually Finite groups and Hopfian Groups and will 
+later look at some of their dynamical properties.
+
+
+\begin{defn}
+  Let $G$ be a group. We say that $G$ is residually finite if for any element
+  $g \in G$ there is a finite group $F$ and a homomorphism $\phi: G \to F$ such
+  that $\phi(g) \neq 1_F$.
+\end{defn}
+
+\begin{ex}
+  All finite groups are residually finite
+\end{ex}
+\begin{ex}
+  $\mathbb{Z}$ is a residually finite group
+\end{ex}
+\begin{ex}
+  The group $GL_{n}(\mathbb{Z})$ is a residaully finite groups.
+\end{ex}
+
+Of course we wish to classify such groups and find out exactly when a group is 
+residually finite. So we will now try and construct a group which is not residually 
+finite
+
+\begin{propn}
+  The group $(\mathbb{Q}, +)$ is not residually finite
+\end{propn}
+
+To prove this we will need the following definition and lemma
+
+\begin{defn}
+  A group $G$ is said to be divisible if for all $g \in G$ and for all $n \in
+  \mathbb{Z}$ there is a $h \in G$ such that $g = h^{n}$.
+\end{defn}
+\begin{lemma}
+  Let $G$ be a divisible group and $F$ a finite group. Every homomorphism
+  $\phi: G \to F$ is trivial.
+\end{lemma}
+\begin{proof}
+ Let $n = |F|$ and let $g \in G$. Since $G$ is divisible we have that there is
+ an $h$ such that $g = h^{n}$. Then we have that
+ \[
+ \phi(g) = \phi(h^{n}) = \phi(h)^{n} = 1
+ .\] 
+\end{proof}
+Thus every homomorphism is trivial.
+
+Now notice that $(\mathbb{Q}, +)$ is clearly a divisble group. But then we have
+as a result there cannot be a finite group $F$ and  $\phi$ such that $\phi(q)
+\neq 1_F$. This is indeed our first example of a non-residually finite group.
+
+\begin{propn}
+  All non-trivial divisible groups are not residually finite
+\end{propn}
+Recalling how we proved that $\mathbb{Z}$ is residually finite, we were able to 
+look at finite index normal subgroups of $\mathbb{Z}$. Notice that these kinds 
+of subgroups  are very useful since we know that we have nice mappings into these 
+kinds of finite groups. This leads us to introduce the notion of the residual 
+subgroup of a group $G$.
+
+\begin{defn}
+  The residual subgroup is the intersection of all finite index subgroups of
+  $G$.
+\end{defn}
+\begin{lemma}
+  Let $G$ a group and $H \le G$ then we can define $K = \bigcap_{g \in H}
+  gHg^{-1}$. Then we have that $K \trianglelefteq G$. Clearly $K \subseteq H$.
+  Moreover, if $H$ is of finite index in $G$ then $K$ of finite index in $G$.
+\end{lemma}
+
+\begin{thm}
+  Let $G$ a group and $N$ the residual subgroup of $G$. Then
+  \begin{enumerate}[(i)]
+    \item $N$ is equal to the intersection of all normal subgroups of $G$
+    \item $N \trianglelefteq G$
+    \item $G$ is residually finite if and only if $N = \{1_G\} $
+  \end{enumerate}
+\end{thm}
+\begin{proof}
+\textbf{Fill this in}
+\end{proof}
+
+\subsection{Stability Properties}
+
+Now knowing some of the properties of residually finite groups, it is important to 
+also explore what we can do to these groups while still preserving their structure. 
+The first natural question to ask here is are the subgroups of a residually
+finite group residually finite. The answer is yes.
+
+\begin{propn}
+  Every subgroup of a residually finite group is residually finite
+\end{propn}
+\begin{proof}
+  \textbf{Fill in Later}
+\end{proof}
+
+\begin{propn}
+  Suppose that $I$ is an indexing set. Let $(G_i)_{i \in I}$ be a family of
+  residually finite groups. $G = \prod_{i \in I}^{} G_i $ is residually finite.
+\end{propn}
+
+\begin{cor}
+  Direct sums of families of groups are residually finite
+\end{cor}
+\begin{cor}
+  Every finitely generated abelian group is residually finite.
+\end{cor}
+\begin{cor}
+  Let $G$ be a group then the following are equivalent
+  \begin{enumerate}[(a)]
+    \item G is residually finite
+    \item There is a family $F_i$ of finite groups such that $G$ is isomorphic
+      to a subgroup of the direct product group $\prod_{i \in I} F_i$
+  \end{enumerate}
+\end{cor}
+
+\begin{propn}
+  If a group $G$ is a limit of projective system of residually finite groups
+  $(G_i)_{i \in I}$ then $G$ is residually finite where $G = \varprojlim G_i$.
+\end{propn}
+\begin{cor}
+  Every profinite group is residually finite.
+\end{cor}
+
+Next we will state the first of many definitions based on properties of groups. Thes
+e will be useful in further classifying groups, and will give us a way to talk about
+groups that may not satisfy properties on their own, but may satisfy them in some lo
+cal sense.
+
+\begin{defn}
+  If $\mathcal{P}$ is a property of gropus then $G$ is virtually $\mathcal{P}$ 
+  if $G$ contains a subgroup of finite index which satisfies $\mathcal{P}$.
+\end{defn}
+\begin{lemma}
+  Let $G$ a group and $H \le P$ of finite index. Suppose that $K \le H$ then
+  $K$ is a subgroup of finite index of  $G$.
+\end{lemma}
+
+\begin{propn}
+  Every virtually residually finite group is residually finite.
+\end{propn}
+
+\subsection{Hopfian Groups}
+
+\begin{defn}
+  A group $G$ is hopfian if every surjective endomorphism $\phi: G\to G$  is
+  injective.
+\end{defn}
+
+\begin{thm}
+  Every finitely generated residaully finite group is Hopfian.
+\end{thm}
+\begin{lemma}
+ Let $G$ a finitely generated group and let $F$ a finite group. Then the set
+ $\Hom(G, F)$ is finite. 
+\end{lemma}
+
+\begin{proof}[Proof of Theorem 2.3.2]
+  
+\end{proof}
+
