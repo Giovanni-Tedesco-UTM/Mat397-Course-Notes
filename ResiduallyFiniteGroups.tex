@@ -166,3 +166,82 @@ cal sense.
   
 \end{proof}
 
+\subsection{Automorphism Groups of Residually Finite Groups}
+
+First we recall the definition of an automorphism
+\begin{defn}
+  An automorphism is a bijective endomorphism $\alpha: G \to G$. We define the
+  set of all automorphism as $\Aut(G)$. This forms a group under function
+  composition and is a subgroup of $\Sym(G)$.
+\end{defn}
+
+The main theorem that we try and show in this section is the relationship
+between a residually finite group and its automorphism group. Namely we are
+going to focus on finitely generated residually finite groups.
+
+\begin{thm}
+  Let $G$ a finitely generated residually finite group. Then $\Aut(G)$ is
+  residually finite.
+\end{thm}
+
+We are going to need the following lemma in order to prove this:
+\begin{lemma}
+  Suppose that $G$ is a group and $H_1, H_2$ are subgroups of finite index.
+  Then the subgroup $H = H_1 \cap H_2$ is a subgroup of finite index.
+\end{lemma}
+\begin{proof}
+  Notice that $g_1 \equiv g_2 \mod(H) \iff g_1 \equiv g_2 \mod(H_1)$ and $g_1
+  \equiv g_2 \mod(H_2)$. Therefore there is an injective map from $G / H \to
+  G / H_1 \times G / H_2$ given by $gH \mapsto (gH_1, gH_2)$ thus $G / H$ is
+  finite.
+\end{proof}
+
+\begin{proof}[Proof of theorem 2.4.2]
+  \textbf{Type this up later.}
+\end{proof}
+
+\subsection{Dynamical Characteristics of Residually Finite Groups}
+It is not completely clear why we care about these residually finite groups, and 
+indeed it is not clear why they are important to us at given that we are studying 
+Cellular Automata and in a broader sense dynamics. However, it turns out that 
+residually finite groups indeed have many interesting dynamical properties. These 
+are described by the following theorem:
+
+\begin{thm}
+  Suppose that $G$ is a group. Then the following are equivalent.
+  \begin{enumerate}
+    \item G is residually finite
+    \item For every set $A$ the set of points $A^{G}$ which have finite $G$ 
+      orbit is dense in $A^{G}$.
+    \item There is a set $A$ having at least two elements such that the set of
+      points which have finite $G$-orbit is dense in $A^{G}$.
+    \item There is a Hausdorff topological space $X$ equipped with a continuous
+      and faithful action of $G$ such that the set of points of $X$ that have
+      finite $G$-orbit are dense in $X$.
+  \end{enumerate}
+\end{thm}
+
+\begin{lemma}
+  Let $G$ a group and $A$ a set having at least 2 elements. Then the action
+  of $G$ on $A^{G}$ is faithful.
+\end{lemma}
+\begin{proof}
+  \textbf{Fill in later.}
+\end{proof}
+
+\begin{lemma}
+  Let $G$ be a residually finite group and let $\Omega$ a finite subset of
+  $G$. Then there exists a normal subgroup $K$ of $G$ of finite index, such
+  that the restricution of the canonical surjection $\rho: G \to G / K$ to
+  $\Omega$ is surjective.
+\end{lemma}
+\begin{proof}
+  \textbf{Fill in later.}
+\end{proof}
+
+\begin{proof}[Proof of theorem 2.5.1]
+ \textbf{Fill in later.} 
+\end{proof}
+
+
+

@@ -1,0 +1,108 @@
+\section{Topology Primer}%
+\label{sec:Topology Primer}
+
+\subsection{Uniform Spaces}
+
+Recall from your real analysis class that a function $f: \mathbb{R} \to
+\mathbb{R}$ is uniformly continuous if it satisfies the following: For all
+$\epsilon > 0$ there is a $\delta > 0$ such that for all $x, y \in \mathbb{R}$.
+
+\[
+| x - y| < \delta \implies |f(x) - f(y)| < \epsilon
+.\] 
+effectively telling us that between any two points of some distance apart, a 
+function can only grow so fast. The issues that begin to arise however, are 
+when we try and generalize this to a more general topological space. Recall 
+that in a general topological space we can define continuity at a point as 
+follows. Let $x \in X$ and $V$ a neighbourhood of $f(x)$, we say that
+a function $f: X \to Y$ is continuous if there exists a neighbourhood $U$ of
+$x$ such that
+\[
+f(U) \subseteq V
+.\] 
+Open sets give us an understanding of what points are ``close'' to
+another point. They don't however, tell us anything about how close these
+points are. So when we try and generalize our definition of uniform continuity
+we need to first make sense of what what it means to keep points close to one
+another.
+
+Suppose that $X$ is a set. We define the diagonal of $X$ which we will denote
+as $\Delta_X$ as 
+\[
+\Delta_X = \{(x, x): x \in X\} \subseteq X \times X
+.\] 
+Now consider a set $R \subseteq X \times X$. We can think of this as a set of
+elements which satisfy some binary relationship $R$. Notice now we can begin to
+talk about all the elements of $X$ which agree with eachother for some
+relationship $R$. Additionally suppose that $y \in X$ we can talk about all
+points of $X$ which agree with $y$ on $R$ as
+\[
+  R[y] = \{x \in X: (x, y) \in R\} 
+.\] 
+Additionally we can denote the inverse of our relationship $R^{-1}$ as
+\[
+  R^{-1} = \{(x, y) = (y, x) \in R \}
+.\] 
+naturally if a set $R$ satisfies both $R$ and $R^{-1}$ we say that $R$ is
+symmetric. Lastly, suppose that $R$ and $S$ are two sets, we can denote the
+composition of these sets as $R \circ S$
+\[
+R \circ S = \{(x, y): \textrm{ there is a $z$ such that $(x, y) \in R, (z, y)
+\in S$}\} 
+.\] 
+Now by the above we can state the definition of a Uniform Structure.
+
+\begin{defn}
+  Suppose that $X$ is a set. A uniform structure on  $X$ is a collection of
+  sets $\mathcal{U}$ of subsets $X \times X$ where $\mathcal{U}$ satisfies the
+  following:
+  \begin{enumerate}
+    \item If $V \in \mathcal{U}$ then $\Delta_{X} \in \mathcal{U}$
+    \item If $V \in \mathcal{U}, V \subseteq V' \subseteq X \times X$ then $V'
+      \in U$
+    \item If $V, W \in \mathcal{U}$ then $V \cap U \in \mathcal{U}$
+    \item If $V \in \mathcal{U}$ then $V' \in \mathcal{U}$
+    \item If $V \in \mathcal{U}$ then there is a $W \in \mathcal{U}$ such that
+      $W \circ W \in \mathcal{U}$
+  \end{enumerate}
+\end{defn}
+Intuitively a uniform structure on $X$ is a system of relationships each of
+which tell us at most how far each of the points contained inside of it are.
+Notice also that every relationship in the set will also contain the diagonal
+of $X$.
+
+If a set $X$ is given a uniform structure $\mathcal{U}$ then we call it
+a uniform space and we refer to $U \in \mathcal{U}$ as entourages.
+
+\begin{ex}
+  Some examples of Uniform spaces are \textbf{fill in later}
+\end{ex}
+
+Additionally recall that a basis of $\mathcal{U}$ is a set $\mathcal{B}
+\subseteq \mathcal{U}$ if for each $U \in \mathcal{U}$ there is a $V \in
+\mathcal{B}$ such that $V \subseteq U$.
+
+\begin{defn}
+  Suppose that $X$ is a set and $\mathcal{B}$ a non-empty set of subsets of $X
+  \times X$. Then $\mathcal{B}$ a basis for some uniform structure on $X$ if
+  and only if
+  \begin{enumerate}
+    \item If $V \in \mathcal{B}$ then $\Delta_{X} \subseteq V$ 
+    \item If $V, W \in \mathcal{B}$ then there is a $U \in \mathcal{B}$ such
+      that $U \subseteq V \cap W$
+    \item If $V \in \mathcal{B}$ then there is a $W \in \mathcal{B}$ such that
+      $W \subseteq V^{-1}$.
+    \item If $V \in \mathcal{B}$ then there is a $W \in \mathcal{B}$ such that
+      $W \circ W \subseteq V$
+  \end{enumerate}
+\end{defn}
+Consider example B.1.1, notice that each of the sets $V_{\epsilon}$ gives us a way 
+to talk about exactly what points $(x,y)$ are epsilon apart from each other by 
+simply checking if $(x, y) \in V_{\epsilon}$. This is very powerful as now we have  
+way of globally asking questions about what points are close together. Notice 
+also that this solves the problem that we were having in our earlier sections of 
+how to define uniform continuity. Once we know what our "closeness" is supposed 
+to look like, we can create a uniform structure relating points that we consider 
+to be "$\epsilon$" close together through the use of defined relationships. This 
+naturally leads us to the definition of uniform continuity.
+

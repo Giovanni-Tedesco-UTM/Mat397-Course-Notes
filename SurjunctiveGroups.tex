@@ -1,3 +1,79 @@
 \section{Surjunctive Groups}%
 \label{sec:Surjunctive Groups}
 
+Surjunctive groups are the first example we see of groups related to the behaviour
+of the cellular automaton on them. Not only do these groups have interesting 
+behaviour in general. They are also a very large subset of all groups. Indeed it is
+currently an open problem to show that there are groups that are not surjunctive.
+
+\subsection{Initial Definition}
+We first begin by defining what a Surjunctive group is.
+
+\begin{defn}
+  Let $G$ be a group and $A$ be a finite set. We say that $G$ is a surjunctive group
+  if every injective cellular automata $\tau: A^{G} \to A^{G}$ is surjective.
+\end{defn}
+
+\begin{propn}
+  Every finite group is Surjunctive.
+\end{propn}
+\begin{proof}
+  If $G$ is a finite group then $A^{G}$ is a finite set and thus every
+  surjective cellular automata $\tau: A^{G} \to A^{G}$ is injective.
+\end{proof}
+
+
+\subsection{Stability Properties}
+Similar to our exploration of Residually Finite Groups we will explore some of the
+stability properties of Surjunctive groups. Additionally we will attempt to come up
+with a necessary and sufficient condition for a group to be surjunctive. We first 
+notice that:
+
+\begin{propn}
+  Every subgroup of a surjunctive group is surjunctive
+\end{propn}
+\begin{proof}
+  \textbf{Fill in later}
+\end{proof}
+
+\begin{propn}
+  Let $G$ a group then the following are equivalent.
+  \begin{enumerate}[(a)]
+    \item G is surjunctive
+    \item Every finitely generated subgroup of $G$ is surjunctive
+  \end{enumerate}
+\end{propn}
+
+This now alludes to a relationship between residually finite groups and 
+surjunctive groups. This relationship would be quite strong, especially because 
+we know that there are already very many residually finite groups and as a result 
+it would show us that many groups are surjunctive almost for free.
+
+\begin{thm}
+  All Residually Finite Groups are surjunctive
+\end{thm}
+
+In order to prove this we will need the following two lemmas.
+
+\begin{lemma}
+  Let $G$ a group and $A$ finite. Let $\tau: A^{G} \to A^{G}$ a cellular
+  automaton. Then $\tau(A^{G})$ is closed in the prodiscrete topology.
+\end{lemma}
+\begin{proof}
+  Notice that since $A$ finite, then $A^{G}$ is compact, and $\tau: A^{G} \to
+  A^{G}$ is continuous. Then we have that $\tau(A^{G})$ is compact and is
+  therefore closed since $A^{G}$ is Hausdorff.
+\end{proof}
+
+\begin{lemma}
+  Let $G$ a group, suppose that $G$ satisfies the following condition. For each
+  finite subset $\Omega \subseteq G$ there is a surjunctive group $F$ and a map
+  $\phi: G \to F$ such that $\phi|_{\Omega}$ is injective. Then we have that
+  $G$ is surjunctive.
+\end{lemma}
+\begin{proof}
+  \textbf{Fill in later}
+\end{proof}
+
+
+\textbf{Marked Groups Section Later}
