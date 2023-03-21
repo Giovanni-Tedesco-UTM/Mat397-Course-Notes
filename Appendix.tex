@@ -106,3 +106,96 @@ to look like, we can create a uniform structure relating points that we consider
 to be "$\epsilon$" close together through the use of defined relationships. This 
 naturally leads us to the definition of uniform continuity.
 
+\newpage
+
+\section{Markov-Kakutani Fixed Point Theorem}%
+\label{sec:Markov-Kakutani Fixed Point Theorem}
+
+\begin{thm}
+  Suppose that $K$ is a non-empty convex, compact subset of a topological
+  vectorspace $X$. Let $\mathcal{F}$ be a family of affine maps $f: K \to K$.
+  If all elements commute that is for all $f_1, f_2 \in \mathcal{F}, f_1 \circ
+  f_2 = f_2 \circ f_1$. Then there exists a point $x \in K$ which is fixed by
+  all $f \in \mathcal{F}$.
+\end{thm}
+
+To prove this we are going to need the following lemams. 
+\begin{lemma}
+  Let $K$ be a compact subset of a topologial space $X$ and let $V$ 
+  a neighbourhood of 0 in $X$. Then there exists a real number $\alpha > 0$ 
+  such that $\lambda K \subseteq V$ for every real number $\lambda$ such that
+  $|\lambda| < \alpha$.
+\end{lemma}
+\begin{proof}
+  Since multiplication is continuous we can find for each $x \in X$ an $\alpha_x 
+  \in \mathbb{R}$  and a neighbourhood $\Omega_x$ for which
+  \[
+  |\lambda| < \alpha_x \implies \lambda_x \Omega_x \subseteq V
+  .\] 
+  These form an open cover of $K$ and thus since $K$ is a compact set we know
+  there is a finite subcover $F \subseteq K$ such that
+  \[
+  K \subseteq \bigcup_{x \in F} \Omega_x
+  .\] 
+  Now take $\alpha_0 = \min_{x \in F} \{\alpha_x\} $ then we have that
+  $\alpha > 0$ and
+  \[
+  |\lambda| < \alpha \implies \lambda K \subseteq V
+  .\] 
+\end{proof}
+
+\begin{lemma}
+  Let $K$ be a compact subset of $X$. Suppose that $(x_i)$ is a net of points
+  and $(\lambda_i) \to 0$ a sequence of real numbers. Then $(\lambda_i x_i)$ 
+  converges to 0 in $X$. 
+\end{lemma}
+\begin{proof}
+  Suppose that $V$ is a neighbourhood of 0 in $X$ then there is an $\alpha
+  > 0$ such that
+  \[
+    \lambda K \subseteq V \tag{For all $\lambda < \alpha$}
+  .\] 
+  Since $\lambda_i \to 0$ there is an $i_0 \in I$ such that for  $i \ge i_0$ we
+  have that $|\lambda_i| < \alpha \implies \lambda_i x_i \in V$ for all $i \ge
+  i_0$. And so $\lambda_i x_i \to 0$. As needed.
+\end{proof}
+
+\begin{lemma}
+  Let $K \subseteq X$ a non-empty convex, compact subset of a Hausdorff
+  topological vector space $X$ and let $f: K \to K$ an affine continuous map.
+  Then  $f$ has a fixed point.
+\end{lemma}
+\begin{proof}
+  Consider the set $C = \{y - f(x): y \in K\}$. Notice that $f$ having a fixed
+  point is equivalent to the fact that $0 \in C$. Now let $x \in K$ and
+  consider $(x_n)_{n \ge 1}$ defined as
+  \[
+  x_n = \frac{1}{n} \sum_{k=0}^{n-1} (f^{k}(x) - f^{k + 1}(c))
+  .\] 
+  We know that each term of the above is in $C$. Notice also that $C$ is
+  convext since $K$ is convex and $f$ is an affine function. Therefore, we have
+  that $x_n \in C$ for all $n \ge 1$. We see that the above sum is
+  a telescoping sum and so we have that
+  \[
+  x_n = \frac{1}{n}x - \frac{1}{n}f^{n}(x)
+  .\] 
+  Notice that this must go to 0 by the previous lemmas. Therefore we have
+  constructed a sequence of elements of $C$ that converge to 0. Since $C$ is
+  compact we have that $C$ is closed and thus $0 \in C$.
+\end{proof}
+\begin{proof}[Proof of Markov-Kakutani]
+  Let $f \in \mathcal{F}$ and consider the set
+  \[
+  \textrm{Fix}(f) = \{x \in K: f(x) = x\} 
+  \] 
+  We see that $\textrm{Fix}(f) \neq 0$ by the previous lemma. Suppose now that
+  $f, g \in \mathcal{F}$ and let $x \in \textrm{Fix}(f)$ we have that
+  \[
+  f(g(x)) = g(f(x)) = g(x)
+  \] 
+  now we can apply the lemma to $g|_{\textrm{Fix}(f)}$ this implies that
+  \[
+  \textrm{Fix}(f) \cap \textrm{Fix}(g) \neq 0
+  \] 
+  and so by induction and the finite intersection property we are done.
+\end{proof}

@@ -1,0 +1,515 @@
+\section{Amenable Groups}%
+\label{sec:Amenable Groups}
+
+\subsection{Finitely Additive Probability Spaces and Means}
+
+Before studying Amenable groups we will need to build up some results from
+probability theory first. Suppose that $E$ is a set.
+\begin{defn}
+  A finitely additive probability measure is a function $\mu: \mathcal{P}(E)
+  \to [0, 1]$ that satisfies the following:
+  \begin{enumerate}
+    \item $\mu(E) = 0$ 
+    \item If $A, B \subseteq E, A \cap B = \emptyset$ then $\mu(A \cup B)
+      = \mu(A) + \mu(B)$
+  \end{enumerate}
+\end{defn}
+
+\begin{propn}
+  Suppose that $\mu$ is a finitely additive probability measure. Then the
+  following statements are true.
+  \begin{enumerate}
+    \item $\mu(\emptyset) = 0$
+    \item $\mu(A \cup B) = \mu(A) + \mu(B) - \mu(A \cap B)$
+    \item $\mu(A \cup B) \le \mu(A) + \mu(B)$
+    \item If $A \subseteq B$ then $\mu(B \ A) = \mu(B) - \mu(A)$
+    \item If $A \subseteq B$ then $\mu(A) \le \mu(B)$
+  \end{enumerate}
+\end{propn}
+
+Our next goal in the chapter is going to be to study 'means' of finitely
+additive probability spaces.  To do so we are going to need to study the space
+$\ell^{\infty}(E)$ otherwise the space of bounded continuous functions from $E
+\to \mathbb{R}$. Notice that this is a normed space with the norm givin by
+$\|\|_{\infty}$ defined as
+\[
+\|x\|_{\infty} = \sup_{s \in E}|x(s)|
+.\] 
+Moreover, we give this space the partial ordering $\le$ by
+\[
+x \le y \iff x(a) \le y(a) \forall a \in E
+.\] 
+We will also occasionally define $\lambda \in \ell^{\infty}$ by functions that
+are identically $\lambda$ on all of $E$. Equipped with this we will define the
+mean as
+
+\begin{defn}
+  A mean is a linear transformation $m: \ell^{\infty} \to \mathbb{R}$ that
+  satisfies the following properties:
+  \begin{enumerate}
+    \item $\mu(1) = 1$
+    \item For all $x \ge 0$, $\mu(x) \ge 0$
+  \end{enumerate}
+\end{defn}
+
+\begin{ex}
+  There is a very important example of a mean that we will be often considering
+  going forward. Suppose that $S \subseteq E$ and $S$ is a countable subset
+  additionally suppose that we have a function $f: S \to \mathbb{R}$ that
+  satisfies the following properties:
+  \begin{enumerate}
+    \item $f(x) \ge 0$ for all $s \in S$
+    \item $\sum_{s \in S}f(s) = 1 $
+  \end{enumerate}
+  Then we can define a mean $m_f$ by
+  \[
+  m_{f}(x) = \sum_{s \in S} f(s)x(s)
+  .\] 
+  Notice that this is a mean on $E$ and moreover this gives us
+  a finiteness/countability condition that we can work with for arbitrary sets
+  $E$. We can say that a mean $m$ on $E$ has countable/finite support if there
+  exists a countable/finite set $S$ and a function $f: S \to \mathbb{R}$ that
+  satisfies the previous conditions such that $m = m_f$.
+\end{ex}
+
+\begin{propn}
+  Some properties of means are as follows:
+  \begin{enumerate}
+    \item $m(\lambda) = \lambda$
+    \item $x \le y \implies m(x) \le m(y)$
+    \item $\inf_E \le m(x) \le \sup_E$ 
+    \item $|m(x)| \le \|x\|_{\infty}$
+  \end{enumerate}
+\end{propn}
+\begin{proof}
+\textbf{Mostly boring fill in later.}
+\end{proof}
+
+If we consider now the topological dual of $\ell^{\infty}$,
+$(\ell^{\infty}(E))^{*}$ namely this is the space of all continuous functions $u:
+\ell^{\infty} \to \mathbb{R}$ we note that this is a Banach space with the
+operator norm $\|\cdot\|$
+\[
+\|u\| = sup_{\|x\|_{\infty} \le 1}|u(x)| 
+.\] 
+
+\begin{propn}
+  Let $m: \ell^{\infty}(E) \to \mathbb{R}$ be a mean for $E$ then $m \in
+  (\ell^{\infty})^{*}$ and $\|m\| = 1$
+\end{propn}
+\begin{proof}
+  \textbf{Also mostly boring\ldots left as an exercise to future me.}
+\end{proof}
+
+Going forward we will denote $\mathcal{M}$ to be the set of means and
+$\mathcal{PM}$ to be the set of finitely additive probability measures. Indeed
+we will try and construct a bijection between the two sets. This will allow us
+to talk about probability measures as elements in the dual space of
+$\ell^{\infty}$ and allow us to use tools from functional analysis to help us.
+
+Consider the characteristic map for some set $A$ $\chi_A: E \to X$, recall that 
+this map is given by $\chi(a) = 1$ if $a \in A$, and $\chi(a) = 0$ otherwise.
+Suppose that $m \in \mathcal{M}$, we define $\widehat{m}: \mathcal{P}(E) \to
+\mathbb{R}$ given to us by
+\[
+\widehat{m}(A) = m(\chi_A)
+.\] 
+Notice that this is indeed a mean on $E$. \textbf{Exercise to future self is to
+double check this}. We notice here that $\widehat{m} \in
+\mathcal{P}\mathcal{M}(E)$.
+
+\begin{thm}
+  The map $\Phi: \mathcal{M}(E) \to \mathcal{P}\mathcal{M}(E)$ defined by
+  $\Phi(m) = \widehat{m}$ is a bijection.
+\end{thm}
+
+Before we begin lets consider the set $\mathcal{E}(E)$ defined as
+\[
+  \mathcal{E}(E) = \{x: E \to \mathbb{R}: \textrm{ $x$ takes on finitely many
+  values}\} 
+.\] 
+
+\begin{lemma}
+  $\mathcal{E}(E)$ is a subspace of $\ell^{\infty}(E)$
+\end{lemma}
+\begin{proof}
+  This is quick to see. Suppose that $x, y \in \mathcal{E}(E)$ and let $c \in
+  \mathbb{R}$. Notice that both $x$ and $y$ take on finitely many values
+  we notice that $cy$ also takes on finitely many values. Moreover, $x + cy$
+  must also take on finitely many values therefore we have that
+  \[
+  x + cy \in \mathcal{E}(E)
+  .\] 
+  Additionally this is clearly a subset of $\ell^{\infty}(E)$. As a result, we
+  have that $\mathcal{E}(E)$ is a subspace of $\ell^{\infty}(E)$ as needed.
+\end{proof}
+
+\begin{lemma}
+  $\mathcal{E}(E)$ is dense in $\ell^{\infty}(E)$. 
+\end{lemma}
+\begin{proof}
+  Let $x \in \ell^{\infty}(E)$ and let $\alpha = \inf_E x, \beta = \sup_E x$. 
+  Suppose that $\epsilon > 0$ is given. We can choose $n$ such that 
+  $\frac{\beta - \alpha}{n} < \epsilon$. Now let $\lambda_i = \alpha
+  + i \frac{(\beta - \alpha)}{n}$ for $i = 1, \ldots,n$. Now we can define the
+  function $y: E \to \mathbb{R}$ given by
+  \[
+  y(a) = \min \left\{ \lambda_i : x(a) \le \lambda_i \right\}
+  \] 
+  for all $a \in E$. Notice that $y \in \mathcal{E}(E)$ and we have that 
+  \[
+  \|x - y\| < \frac{\beta - \alpha}{n} < \epsilon
+  \] 
+  by definition. As a result, we have that $\mathcal{E}(E)$ is dense in
+  $\ell^{\infty}(E)$ as needed.
+\end{proof}
+
+The above two lemmas are enough to show that the map $\Phi$ is injective.
+
+\begin{proof}[Proof of injectivity of Theorem 4.1.7]
+  Suppose that $\Phi(m_1) = \Phi(m_2)$ then we know that
+  \[
+  \hat{m_1} = m_1(\chi_A) = m_2(\chi_A) = \hat{m_2}
+  .\] 
+  Since we know that $m_1, m_2$ are continuous functions that agree on
+  $\mathcal{E}(E)$. \textbf{Double check the net argument here}(follows from
+  the density of $\mathcal{E}(E)$ and continuity of $M$. Since this is
+  a Hausdorff space and $m_1, m_2$ are continuous. Therefore, we have that
+  $\Phi$ is injective as needed.
+\end{proof}
+
+\subsection{Properties of Set Means}
+
+In the previous section we considered the toplogy on $(\ell^{\infty}(E))^{*}$ given
+to us by $\|\cdot\|$. This is what we call the strong-topoloy. For this section
+we will consider the weak-* topology on $\ell^{\infty}(E)$. Recall that this is
+the smallest topology for which the evaluation map is continuous. Namely that
+\begin{align*}
+  \psi_x : (\ell^{\infty}(E))^{*} &\to \mathbb{R} \\
+                 u &\mapsto u(x)
+.\end{align*}
+
+It is also important to notice that $\mathcal{M}(E) \subseteq \mathcal{U}$
+where $\mathcal{U}$ denotes the unit ball of $(\ell^{\infty}(E))^{*}$. Defined by
+ \[
+\mathcal{U} = \{u: \|u\| = 1\} \subseteq (\ell^{\infty}(E))^{*}
+.\] 
+Recall that by the Banach Alaoglu theorem $\mathcal{U}$ is a compact set. We
+wish to show now that the set $\mathcal{M}(E)$ is a compact convex set with 
+resepct to the weak-* topology. 
+
+\begin{thm}
+  $\mathcal{M}(E)$ is a compact convex subset of $((\ell^{\infty})(E))^{*}$ with
+  respect to the weak-* topology.
+\end{thm}
+\begin{proof}
+  First we will show that $\mathcal{M}(E)$ is a convex subset. To do this we
+  will show that for $m_1, m_2 \in \mathcal{M}(E)$ the straight line $\gamma:
+  \ell^{\infty}(E) \to \mathbb{R}$ given by $\gamma(x) = tm_1(x) + (1-t)m_2(x) \in 
+  \mathcal{M}(E)$ for $t \in [0, 1]$. We first check that $\gamma(1) = 1$. 
+  Here we clearly have that
+  \[
+  \gamma(1) = tm_1(1) + (1 - t)m_2(1) = t + 1 - t = 1
+  .\] 
+  Additionally, we notice that for all $x \in \ell^{\infty}(E)$ we have that
+  \[
+  \gamma(x) = tm_1(x) + (1 - t)m_2(x) \ge 0
+  .\] 
+  Therefore we can conclude that $\gamma \in \mathcal{M}(E)$ and thus we see
+  that $\mathcal{M}(E)$ is convex.\\
+  Next to show that $\mathcal{M}(E)$ is (weakly)-compact, we note that it is 
+  sufficient to show that it is closed in the weak-* topology. This is because
+  we know that $\mathcal{M}(E) \subseteq \mathcal{U}$ and $\mathcal{U}$ is
+  compact. Suppose that $(m_i)_{i \in I}, x_i \in \mathcal{M}(E)$ is a net 
+  that converges to a point $(u \in \ell^{\infty})^{*}$. Here we notice that
+  for every $i \in I$ $\psi_1(m_i) = 1$ and $\psi_x(m_i) \ge 0$. Now by the
+  continuitiy of the evaluation map in the weak-* topology we see that 
+  \[
+  u(1) = \psi_1(u) = 1 \qquad \textrm{and} \qquad u(x) = \psi_x(u) \ge 0 
+  \] 
+  and so we see that $u \in \mathcal{M}(E)$. Therefore, since out net was
+  arbitrary we see that every net of points in $\mathcal{M}(E)$ converges to
+  a point in $\mathcal{M}(E)$ and therefore $\mathcal{M}(E)$ is closed in the
+  weak-* topology. As needed.
+\end{proof}
+
+\subsection{Means and Measures on Groups}
+
+Notice that in the previous sections our definitions of means and measures were
+on sets in general. Here we will see that when the underlying set is a group
+that we have some additional properties on top of the usual properties of
+measures and means. Namely if $G$ is a group then there are natrual actions of
+$G$ that can be put on $\mathcal{PM}(G)$ and on $\mathcal{M}(G)$. 
+
+\begin{defn}[G acting on $\mathcal{PM}(G)$]
+  We can define the left action of $G$ on $\mathcal{PM}(G)$ as the map $g\mu:
+  \mathcal{P}(G) \to [0, 1]$ given by
+  \[
+  g\mu(A) = \mu(g^{-1}A)
+  .\] 
+  for all $A \in \mathcal{P}(G)$. We can do something similar for the right
+  action by defining a function $\mu g: \mathcal{P} \to [0,1]$ given by
+  \[
+  \mu g(A) = \mu(A g^{-1})
+  .\] 
+\end{defn}
+
+\begin{defn}[Right G-shift on $\mathbb{R}^{G}$ ]
+ Now recall from the previous section we defined the shift action on the group
+$A^{G}$. Here if we take $A = \mathbb{R}$ then we can define the g-shift map as
+\[
+  gx(g') = x(g^{-1} g') \textrm{ (For all $g' \in G$)}
+.\] 
+We can similarly define the element $xg$ as
+\[
+xg(g') = x(g'g^{-1})
+.\] 
+This gives us a right action of $G$ on $\mathbb{R}^{G}$.
+\end{defn}
+Notice now that by duality we get a left and a right action of $G$ on
+$\ell^{\infty}(G)^{*}$. Namely that for $g \in G$ and $u \in
+\ell^{\infty}(G)^{*}$ we can define the elements $gu$ and $ug$ as
+\[
+  gu(x) = u(g^{-1}x) \tag{Similar for $ug$ }
+.\] 
+Notice that that the set $\mathcal{M}(G)$ is invariant under both actions of
+$G$ on $\ell^{\infty}(G)^{*}$.
+
+\begin{propn}
+  The left action of $G$ on $\mathcal{M}(G)$ is affine and continuous with
+  respect to the weak-* topology on $\mathcal{M}(G)$.
+\end{propn}
+\begin{proof}
+  It is clear that the left action of $G$ on $\ell^{\infty}(G)^{*}$ is linear.
+  Moreover, in the weak-* topology these actions are also continuous since if
+  we fix $g \in G$ then the map $u \mapsto gu$ is continuous as for each $x \in
+  \ell^{\infty}(G)$ the map $u \mapsto gu(x)$ is the evaluation map at
+  $g^{-1}(x)$. These are continuous by definition. Since $\mathcal{M}(G)$ is
+  a convex subset of $\ell^{\infty}(G)^{*}$ we have that the restriction of the
+  action to $\mathcal{M}(G)$ is continuous. As needed.
+\end{proof}
+For the left action we provide a similar argument.
+
+For a map $\mu \in \mathcal{PM}(G)$ we have that map $\mu*: \mathcal{P}(G) \to
+[0,1]$ given by
+\[
+\mu*(A) = \mu(A^{-1}) \textrm{ for all $A \in \mathcal{P}(G)$}
+.\] 
+Notice that $\mu*$ and $\mu \mapsto \mu*$ are involutions of $\mathcal{PM}(G)$.
+Additional for $x \in \ell^{\infty}(G)$ define $x^{*} \in
+\ell^{\infty}(G)^{*}$ by
+\[
+x^{*}(g) = x(g^{-1}) \textrm{ for all $g \in G$}
+.\] 
+The map $x \mapsto x^{*}$ is an isometric involution of $\ell^{\infty}(G)$. By
+duality it gives the isometric involution $u \mapsto u^{*}$ of
+$\ell^{\infty}(G)^{*}$ by
+\[
+u^{*}(x) = u(x^{*}) \textrm{ for all $x \in \ell^{\infty}(G)$}
+.\] 
+
+There are some playing nice conditions that happen with all of these operators
+namely the following proposition
+
+\begin{propn}
+  Let $g \in G, x \in \ell^{\infty}(G), \mu \in \mathcal{PM}(G), u \in
+  \ell^{\infty}(G)^{*}$. Then we have that 
+  \begin{enumerate}
+    \item $(gx)^{*} = x^{*}g^{-1}$
+    \item $(xg)^{*} = g^{-1}x^{*}$ 
+    \item \ldots and other. See page 84 in the textbook
+  \end{enumerate}
+\end{propn}
+
+\subsection{Definition of Amenability}%
+\label{sub:Definition of Amenability}
+
+At last, we will attempt to define what it means to be an amenable group!
+However, we will need some more definitions first. Namely we will need to know
+what a left/right invariant probability measure is, and then how these will
+interact also with the means that can be placed on the group.
+
+\begin{defn}
+  A finitely additive probaility measure $\mu \in \mathcal{PM}(G)$ is left
+  invariant if for all $g \in G$ we have that
+  \[
+  g\mu = \mu
+  .\] 
+  Similarly for a right invariant measure. A probaility measure $\mu$ is said
+  to be bi-invariant if $\mu$ is both left and right invariant.
+\end{defn}
+
+We have a similar notion for group means
+\begin{defn}
+  Suppose that $m \in \mathcal{M}(G)$ then $m$ is left invariant if $m$ is
+  fixed under the left group action of $G$ on $\mathcal{M}(G)$. One says that
+  $m$ is bi-invariant if $m$ is both-left and right invariant.
+\end{defn}
+
+\begin{propn}
+  Suppose that $\mu \in \mathcal{PM}(G)$ the $\mu$ is left invariant if and
+  only if $\mu^{*}$ is right invariant
+\end{propn}
+
+\begin{propn}
+  Suppose that $m \in \mathcal{M}(G)$ then $m$ is left invariant if and only if
+  $\mu*$ is right invariant
+\end{propn}
+
+\begin{propn}
+  Let $m \in \mathcal{M}(G)$ then $m$ is left invariant if and only if the
+  associated probability measure $\hat{m} \in \mathcal{PM}(G)$ is left-invariant.
+\end{propn}
+These propositions follow immediately from properties of means and medians
+under group actions given in the previous section. Next is potentially the most
+important proposition in this chapter, namely what it means for a group to be
+amenable.
+
+\begin{propn}
+  Let $G$ be a group. Then the following are equivalent.
+  \begin{enumerate}
+    \item There is a left-invariant finitely additive probability measure on $G$
+    \item There is a right-invariant finitely additive probability measure on $G$
+    \item There is a bi-invariant finitely additive probability measure on $G$
+    \item There is a left-invariant mean on $G$
+    \item There is a right-invariant mean on $G$
+    \item There is a bi-invariant mean on $G$
+  \end{enumerate}
+\end{propn}
+\begin{proof}
+  \textbf{Fill this in later}
+\end{proof}
+
+\begin{defn}
+  A group $G$ is said to be amenable if it satisfies any of the above
+  conditions.
+\end{defn}
+
+Some important observations to begin with
+
+\begin{propn}
+  Every finite group is amenable
+\end{propn}
+\begin{proof}
+  Suppose that $G$ is a finite group. Then consider the probability measure
+  $\mu: \mathcal{P}(G) \to [0, 1]$ given by
+  \[
+    \mu(A) = \frac{|A|}{|G|}
+  .\] 
+  This is clearly a bi-invariant probability measure on $G$.
+\end{proof}
+
+Next we will present the most important non-amenable group.
+\begin{thm}
+  The free group on two generators is not amenable.
+\end{thm}
+\begin{proof}
+  \textbf{Fill in later}
+\end{proof}
+
+\subsection{Stability Properties}%
+\label{sub:Stability Properties}
+
+Oh jeez here we are again. Of course we need to talk about how stable amenable
+groups are. It again turns out that they are very stable, and indeed even have
+conditions under which we can determine the amenability of a group by looking
+at particular normal subgroups.
+
+\begin{propn}
+  Every subgroup of an amenable group is amenable
+\end{propn}
+\begin{proof}
+  
+\end{proof}
+
+\begin{propn}
+  Every quotient of an amenable group is amenable
+\end{propn}
+\begin{proof}
+  
+\end{proof}
+
+\begin{propn}
+  Let $G$ a gropu and $H$ a normal subgroup of $G$. Suppose that $H$ and
+  $G / H$ are amenable. Then the group $G$ is amenable.
+\end{propn}
+\begin{proof}
+  
+\end{proof}
+
+\begin{cor}
+  The direct product of amenable groups is amenable.
+\end{cor}
+
+\begin{propn}
+  Every group which is the limit of an inductive system of amenable groups is
+  amenable.
+\end{propn}
+\begin{proof}
+  
+\end{proof}
+
+\subsection{Solvable Groups}%
+\label{sub:Solvable Groups}
+
+\subsection{Folner Conditions}%
+\label{sub:Folner Conditions}
+The Folner conditions give us another way to classify if a groups is ameanble.
+To understand the Foelner conditions we will first show that the following are
+equivalent.
+
+\begin{propn}
+  Let $G$ be a group, then the following are equivalent
+  \begin{enumerate}[(a)]
+    \item For all $K \subseteq G$, finite and for all $\epsilon > 0$ there is
+      a finite subset $F \subseteq G$ such that
+      \[
+      \frac{|F \backslash kF|}{|F|} < \epsilon \textrm{ for all $k \in K$}
+      .\] 
+    \item There is a net $(F_j)_{j \in J}$ of subsets of $G$ such that
+      \[
+      \lim_{j} \frac{|F \backslash gF|}{|F|} = 0 \textrm{ for all $g \in G$}
+      .\] 
+  \end{enumerate}
+  And similar `right' conditions.
+\end{propn}
+\begin{proof}
+  It is clear that the left and right conditions imply eachother. Now we will
+  show that $(a) \iff (b)$. First suppose that $(a)$ holds. Define $J$ as all
+  pairs of finite subsets $(K, \epsilon)$, recall that we get this epsilon from
+  the assumption of $(a)$. Now we define the partial order $\le$ on $J$ as
+  \[
+    (K, \epsilon) \le (K', \epsilon') \iff (K \subseteq K' \textrm{ and
+    } \epsilon \ge \epsilon'
+  .\] 
+  J forms a lattice but namely J is a paritally ordered set. For each $j \in J$
+  there exists a $F_j \subseteq G$ for which
+  \[
+      \frac{|F \backslash kF|}{|F|} < \epsilon \textrm{ for all $k \in K$}
+  .\] 
+  now let $g \in G$ and fix $\epsilon_0 > 0$. Define $j_0 = (\{g\}
+  , \epsilon_0$. If $j = (K , \epsilon)$ and $j \ge j_0$ then for some $g \in
+  K, \epsilon \le \epsilon_0$ for which
+  \[
+      \frac{|F \backslash gF|}{|F|} < \epsilon_0 
+  .\] 
+  Thus the net satisfies $(b)$ as needed. The other direction follows quickly
+  by a simlar argument.
+\end{proof}
+
+\begin{defn}
+  We say that a group $G$ satisfies the Foelner conditions if it satisfies any
+  of the above conditions.
+\end{defn}
+
+
+
+
+% \subsection{Paradoxical Decompositions}%
+% \label{sub:Paradoxical Decompositions}
+
+
+
+
+
+
